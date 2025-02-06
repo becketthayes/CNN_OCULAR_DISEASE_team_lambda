@@ -1,0 +1,14 @@
+chatgpt identified trends and possible outliers for the data set:
+
+The age distribution shows a typical range between 51 and 66 years, with a mean of about 58 years. However, there is a minimum age of 1, which might be an outlier or a data entry error. The maximum age is 91, which seems reasonable.
+
+Disease Prevalence:
+Diabetes (D) and Hypertension (H) are among the most common conditions.
+Cataracts (C) and Glaucoma (G) also have a significant presence.
+Pathological Myopia (M) and Age-related Macular Degeneration (A) are less common.
+Age-Related Trends:
+
+Diabetes and Hypertension increase in frequency with age.
+Cataracts and Glaucoma are more prevalent in older age groups.
+Other diseases (O) are spread across all age groups but peak in middle age.
+Younger age groups (0-20, 21-40) have very few cases, likely reflecting a bias in the dataset toward older individuals. 
