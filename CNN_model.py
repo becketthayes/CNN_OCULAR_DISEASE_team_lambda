@@ -45,7 +45,7 @@ labels = []
 
 for index, row in df.iterrows():
 
-    path = f"preprocessed_images/{row["filename"]}"
+    path = f"preprocessed_images/{row['filename']}"
 
     if os.path.exists(path):
         img_info = cv2.imread(path)
@@ -96,25 +96,6 @@ test_data = dataset.skip(len_train+len_val).take(len_test)
 class_weights = compute_class_weight("balanced", classes=np.unique(labels), y=labels)
 class_weights = dict(zip(np.unique(labels), class_weights))
 
-"""
-resnet_model = Sequential()
-
-pretrained_model = tf.keras.applications.ResNet50(include_top=False,
-                                                  input_shape=(256, 256, 3),
-                                                  pooling='avg',
-                                                  classes=8,
-                                                  weights="imagenet")
-for layer in pretrained_model.layers:
-    layer.trainable=False
-
-resnet_model.add(pretrained_model)
-resnet_model.add(Flatten())
-resnet_model.add(Dense(64, activation="relu"))
-resnet_model.add(Dense(8, activation="softmax"))
-resnet_model.compile('adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-resnet_model.summary()
-resnet_model.fit(train_data, epochs=20, validation_data=val_data, class_weight = class_weights)
-"""
 model = Sequential()
 model.add(Conv2D(16, (3, 3), 1, activation="relu", input_shape=(256, 256, 3)))
 model.add(MaxPooling2D())
@@ -163,3 +144,22 @@ val = data.skip(train_size).take(val_size)
 test = data.skip(train_size + val_size_).take(test_size)
 """
 
+"""
+resnet_model = Sequential()
+
+pretrained_model = tf.keras.applications.ResNet50(include_top=False,
+                                                  input_shape=(256, 256, 3),
+                                                  pooling='avg',
+                                                  classes=8,
+                                                  weights="imagenet")
+for layer in pretrained_model.layers:
+    layer.trainable=False
+
+resnet_model.add(pretrained_model)
+resnet_model.add(Flatten())
+resnet_model.add(Dense(64, activation="relu"))
+resnet_model.add(Dense(8, activation="softmax"))
+resnet_model.compile('adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+resnet_model.summary()
+resnet_model.fit(train_data, epochs=20, validation_data=val_data, class_weight = class_weights)
+"""
