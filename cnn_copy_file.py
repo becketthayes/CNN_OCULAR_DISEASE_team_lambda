@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.preprocessing import LabelEncoder
+from sklearn.utils.class_weight import compute_class_weight
 
 def visualizer_helper(images, labels):
     combined_array = list(zip(images, labels))
@@ -59,7 +61,7 @@ for index, row in df.iterrows():
 images = np.array(images)
 labels = np.array(labels)
 
-visualizer_helper(images, labels)
+#visualizer_helper(images, labels)
 
 label_encoder = LabelEncoder()
 labels = label_encoder.fit_transform(labels)
@@ -82,8 +84,60 @@ for batch_images, batch_labels in dataset.take(1):  # take(1) to get just one ba
     plt.imshow(first_image)
     plt.show()
     """
-# tests to check if the images are loaded properly
+
+len_train = 160
+len_val = 20
+len_test = 20
+
+train_data = dataset.take(len_train)
+val_data = dataset.skip(len_train).take(len_val)
+test_data = dataset.skip(len_train+len_val).take(len_test)
+
+class_weights = compute_class_weight("balanced", classes=np.unique(labels), y=labels)
+class_weights = dict(zip(np.unique(labels), class_weights))
+
 """
+resnet_model = Sequential()
+
+pretrained_model = tf.keras.applications.ResNet50(include_top=False,
+                                                  input_shape=(256, 256, 3),
+                                                  pooling='avg',
+                                                  classes=8,
+                                                  weights="imagenet")
+for layer in pretrained_model.layers:
+    layer.trainable=False
+
+resnet_model.add(pretrained_model)
+resnet_model.add(Flatten())
+resnet_model.add(Dense(64, activation="relu"))
+resnet_model.add(Dense(8, activation="softmax"))
+resnet_model.compile('adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+resnet_model.summary()
+resnet_model.fit(train_data, epochs=20, validation_data=val_data, class_weight = class_weights)
+"""
+model = Sequential()
+model.add(Conv2D(16, (3, 3), 1, activation="relu", input_shape=(256, 256, 3)))
+model.add(MaxPooling2D())
+
+model.add(Conv2D(32, (3, 3), 1, activation="relu"))
+model.add(MaxPooling2D())
+
+model.add(Conv2D(16, (3, 3), 1, activation="relu"))
+model.add(MaxPooling2D())
+
+model.add(Flatten())
+
+model.add(Dense(256, activation="relu"))
+model.add(Dropout(0.35))
+model.add(Dense(8, activation="softmax"))
+
+model.compile('adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.summary()
+
+history = model.fit(train_data, epochs=70, validation_data=val_data, class_weight = class_weights)
+# tests to check if the images are loaded properly
+
+""" 
 img_info_right = (images[0] * 255).astype('uint8')
 right_rgb = cv2.cvtColor(img_info_right, cv2.COLOR_BGR2RGB)
 
