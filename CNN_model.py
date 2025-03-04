@@ -81,6 +81,7 @@ labels = np.array(labels)
 label_encoder = LabelEncoder()
 labels = label_encoder.fit_transform(labels)
 print(labels)
+print(label_encoder.classes_)
 
 dataset = tf.data.Dataset.from_tensor_slices((images, labels))
 
@@ -156,7 +157,7 @@ results = model.evaluate(test_data)
 # Print the test loss and test accuracy
 print("Test loss, test accuracy:", results)
 
-# model.save(os.path.join('model', 'final_CNN6.h5'))
+model.save(os.path.join('model', 'final_CNN6.h5'))
 
 """
 pre = Precision()
