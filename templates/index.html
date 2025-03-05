@@ -15,6 +15,10 @@
 
         {% if prediction %}
             <p class="text-center"> Image of the eye shows signs of {{prediction}}</p>
+
+            <div class="text-center">
+                <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid mt-3" style="max-width: 500px; border: 2px solid black;">
+            </div>
         {% endif %}
     </body>
 </html>
