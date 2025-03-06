@@ -13,7 +13,7 @@ label_converter = {0 : 'Age related Macular Degeneration',
                    6: 'Normal',
                    7: 'Other diseases/abnormalities'}
 
-new_model = load_model('/Users/becketthayes/Desktop/team_lambda/model/final_CNN.h5')
+new_model = load_model('model/final_CNN.h5')
 
 def prepare_image(image_path):
     # Load the image
