@@ -6,7 +6,7 @@ import numpy as np
 
 label_converter = {0 : 'Age related Macular Degeneration',
                    1: 'Cataract',
-                   2: 'Diabetes',
+                   2: 'Diabetic Retinopathy',
                    3: 'Glaucoma',
                    4: 'Hypertension',
                    5: 'Pathological Myopia',

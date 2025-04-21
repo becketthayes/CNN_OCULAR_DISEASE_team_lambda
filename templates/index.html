@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <h1 class="text-center">Image Classifier</h1>
+        <h1 class="text-center">Ocular Disease Classifier</h1>
 
         <form class="p-3 text-center" action='/', method="post" enctype="multipart/form-data">
             <input class="form-control" type="file" name="imagefile" >
@@ -14,10 +14,10 @@
         </form>
 
         {% if prediction %}
-            <p class="text-center"> Image of the eye shows signs of {{prediction}}</p>
+            <p class="text-center" style="font-size: 24px;"> Image of the eye shows signs of {{prediction}}</p>
 
             <div class="text-center">
-                <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid mt-3" style="max-width: 500px; border: 2px solid black;">
+                <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid mt-3" style="max-width: 400px; width: 100%; height: auto; border: 2px solid black;">
             </div>
         {% endif %}
     </body>
