@@ -1,0 +1,20 @@
+/* styleguide.css */
+
+:root {
+    --color-header: #ffccbc;
+    --color-primary: #e65100;
+    --color-accent: #ffab91;
+    --color-background: #fff8f0;
+    --color-panel: #fff3e0;
+    --color-text: #4e342e;
+  
+    --font-main: 'Segoe UI', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 2.5rem;
+    --font-size-medium: 1.5rem;
+    --font-size-small: 0.9rem;
+  
+    --spacing-small: 10px;
+    --spacing-medium: 20px;
+    --spacing-large: 30px;
+  }
