@@ -163,3 +163,12 @@ body, html {
   width: 911px;
   text-align: center;
 }
+
+.clickable-upload {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clickable-upload:hover {
+  background-color: #cfcfcf;
+}

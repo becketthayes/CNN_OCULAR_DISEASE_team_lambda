@@ -1,8 +1,13 @@
 import os
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 from tensorflow.keras.models import load_model
 import cv2 
+from flask_cors import CORS
 import numpy as np
+
+app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
+
 
 label_converter = {0 : 'Age related Macular Degeneration',
                    1: 'Cataract',
@@ -48,17 +53,10 @@ def prepare_image(image_path):
 
     return cropped_img.astype(np.float32), cropped_image_path
 
-app = Flask(__name__)
 
-
-@app.route('/', methods=['GET'])
-
-def hello_world():
-    return render_template('index.html')
-
-@app.route('/', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
-    imagefile = request.files['imagefile']
+    imagefile = request.files['image']
     image_path = "static/images/" + imagefile.filename
     imagefile.save(image_path)
 
@@ -69,8 +67,7 @@ def predict():
     confidence = np.max(prediction)
     class_prediction = label_converter[np.argmax(prediction)]
 
-    return render_template('index.html', prediction=class_prediction+f" with {confidence*100:.4f}% confidence.",
-                           image_url=path)
+    return jsonify({'prediction': class_prediction})
 
 if __name__ == '__main__':
-    app.run(port=3000, debug=True)
+    app.run(port=5001, debug=True)
