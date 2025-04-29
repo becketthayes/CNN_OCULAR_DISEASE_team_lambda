@@ -1,27 +1,41 @@
-// Desktop.jsx
 import React from "react";
+import logo1 from "./images/logo-1.png";
 import "./style.css";
-import logo from "./images/logo.png"; 
 
-export const Desktop = () => {
+export const LandingPage = () => {
   return (
-    <div className="landing-page">
-      <header className="header">
-        <img src={logo} alt="Lambda Logo" className="logo" />
-        <h1 className="title">Welcome to Lambda</h1>
-      </header>
+    <div className="page-wrapper">
+      <div className="landing-page" data-model-id="1:902">
+        <div className="overlap-group">
+          <div className="rectangle" />
 
-      <main className="main-content warm-theme">
-        <div className="intro-box">
-          <p className="intro-text">
-            Our mission is to enhance ocular disease classification with machine learning.
-          </p>
+          <div className="text-wrapper">Opticare</div>
+
+          <div className="items">
+            <div className="div">About your Results</div>
+
+            <div className="div">About Us</div>
+
+            <button className="button">
+              <div className="text-wrapper-2">Home</div>
+            </button>
+          </div>
+
+          <img className="logo" alt="Logo" src={logo1} />
         </div>
-      </main>
 
-      <footer className="footer">
-        <p className="footer-text">© 2025 Lambda Team. All rights reserved.</p>
-      </footer>
+        <div className="overlap">
+          <div className="text-wrapper-3">Displays results here</div>
+        </div>
+
+        <div className="div-wrapper">
+          <p className="p">Drag or drop image of the eye here</p>
+        </div>
+
+        <p className="text-wrapper-4">
+          Upload a fundus image of the eye to get quick diagnosis!
+        </p>
+      </div>
     </div>
   );
 };

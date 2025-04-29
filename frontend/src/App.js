@@ -1,11 +1,11 @@
 import React from "react";
-import { Desktop } from "./Desktop"; // adjust path if needed
+import { LandingPage } from './Desktop';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Desktop />
+      <LandingPage />
     </div>
   );
 }
