@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo1 from "./images/logo-1.png";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export const LandingPage = () => {
   const [prediction, setPrediction] = useState("Displays results here");
@@ -35,7 +36,7 @@ export const LandingPage = () => {
 
           <div className="items">
             <div className="div">About your Results</div>
-            <div className="div">About Us</div>
+            <Link to="/about" className="div">About Us</Link>
             <button className="button">
               <div className="text-wrapper-2">Home</div>
             </button>

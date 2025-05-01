@@ -1,0 +1,290 @@
+/* Base styles */
+:root {
+  --primary-bg-color: #abddde;
+  --nav-bg-color: #d9d9d9;
+  --button-bg-color: #000000;
+  --text-color: #000000;
+  --button-text-color: #ffffff;
+  --section-spacing: 60px;
+  --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --button-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --border-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Jura-Medium", Helvetica, Arial, sans-serif;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Main container */
+.about-us {
+  background-color: var(--primary-bg-color);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 80px;
+}
+
+/* Header and Navigation */
+.header {
+  background-color: var(--nav-bg-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 164px;
+  margin-bottom: 40px;
+}
+
+.logo-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 164px;
+  width: 164px;
+  object-fit: cover;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.nav-items {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-button {
+  all: unset;
+  cursor: pointer;
+  background-color: var(--button-bg-color);
+  color: var(--button-text-color);
+  padding: 14px 24px;
+  border-radius: 8px;
+  box-shadow: var(--button-shadow);
+  text-align: center;
+}
+
+.nav-link {
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+
+.link-text, .button-text {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* Main Content */
+.main-content {
+  padding: 0 40px;
+}
+
+/* Section Styles */
+.section-title {
+  font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 30px;
+  text-shadow: var(--text-shadow);
+}
+
+.section-text {
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-divider {
+  height: 2px;
+  background-color: var(--text-color);
+  width: 100%;
+  margin: var(--section-spacing) 0;
+}
+
+/* Specific Sections */
+.problem-statement-section, 
+.solution-section {
+  margin-bottom: var(--section-spacing);
+}
+
+/* Dataset Section */
+.dataset-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.dataset-button {
+  all: unset;
+  cursor: pointer;
+  background-color: var(--nav-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 14px 24px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 1036px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dataset-button .button-text {
+  font-size: 40px;
+  line-height: 60px;
+  text-shadow: var(--text-shadow);
+  -webkit-text-stroke: 1px var(--text-color);
+}
+
+/* Disease Legend */
+.disease-legend {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.legend-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-text {
+  font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 700;
+}
+
+/* Chart and Data Sections */
+.disease-prevalence,
+.age-trends {
+  width: 100%;
+  max-width: 1140px;
+  margin: 40px auto;
+}
+
+.subsection-title {
+  font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subsection-text {
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.chart-container,
+.screenshot-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  width: 100%;
+}
+
+.distribution-chart,
+.screenshot {
+  width: 100%;
+  max-width: 1068px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .section-text,
+  .subsection-text {
+    font-size: 32px;
+    line-height: 48px;
+  }
+  
+  .legend-text {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  
+  .dataset-button .button-text {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+  
+  .logo {
+    height: 120px;
+    width: 120px;
+  }
+  
+  .nav-items {
+    margin-top: 20px;
+    flex-direction: column;
+  }
+  
+  .section-text,
+  .subsection-text {
+    font-size: 24px;
+    line-height: 36px;
+  }
+  
+  .section-title,
+  .subsection-title {
+    font-size: 32px;
+  }
+  
+  .legend-text {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  
+  .disease-legend {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .dataset-button .button-text {
+    font-size: 24px;
+    line-height: 36px;
+  }
+}
