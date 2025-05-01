@@ -1,41 +1,17 @@
 import React from "react";
-import "./style_au.css";
-import logo from "./images/logo-1.png"
-import disease_distribution from "./images/distribution-of-diseases-1.png"
-import photo_2 from "./images/photo-2.png"
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import "./style.css";
+import disease_distribution from "./images/distribution-of-diseases-1.png";
+import photo_2 from "./images/photo-2.png";
+import { Header } from "./components/Header";
 
 export const AboutUs = () => {
   return (
-    <div className="about-us">
+    <div className="page">
       <div className="container">
-        <header className="header">
-          <div className="logo-container">
-            {/* Replace with actual image import */}
-            <img className="logo" alt="Logo" src={logo} />
-          </div>
-          
-          <nav className="navigation">
-            <div className="nav-items">
-              {/* Use Link component instead of button */}
-              <Link to="/" className="nav-button primary">
-                <div className="button-text">Home</div>
-              </Link>
-              
-              <div className="nav-link active">
-                <div className="link-text">About Us</div>
-              </div>
-              
-              <div className="nav-link">
-                <div className="link-text">About your Results</div>
-              </div>
-            </div>
-          </nav>
-        </header>
+        <Header activePage="about" />
         
-        {/* Rest of your component remains the same */}
         <main className="main-content">
-          <section className="problem-statement-section">
+          <section className="content-section">
             <h2 className="section-title">Our problem statement</h2>
             <p className="section-text">
               The early detection of ocular diseases is vital to ensure healthy
@@ -48,7 +24,7 @@ export const AboutUs = () => {
           
           <div className="section-divider"></div>
           
-          <section className="solution-section">
+          <section className="content-section">
             <h2 className="section-title">Our solution</h2>
             <p className="section-text">
               Our program addresses the problem by using machine learning models
@@ -63,12 +39,17 @@ export const AboutUs = () => {
           
           <div className="section-divider"></div>
           
-          <section className="dataset-section">
-          <a href="https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k" target="_blank" rel="noopener noreferrer">
-            <button className="dataset-button">
-              <div className="button-text">Link to dataset!</div>
-            </button>
-          </a>
+          <section className="content-section dataset-section">
+            <a 
+              href="https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="dataset-link"
+            >
+              <button className="dataset-button">
+                <div className="button-text">Link to dataset!</div>
+              </button>
+            </a>
             
             <div className="disease-legend">
               <div className="legend-column">
@@ -97,9 +78,9 @@ export const AboutUs = () => {
               />
             </div>
 
-            <div className="disease-prevalence">
-              <h3 className="subsection-title">Disease Prevalence:</h3>
-              <p className="subsection-text">
+            <div className="info-block">
+              <h3 className="info-title">Disease Prevalence:</h3>
+              <p className="info-text">
                 Diabetes (D) and Hypertension (H) are among the most common
                 conditions.<br />
                 Cataracts (C) and Glaucoma (G) also have a significant presence.<br />
@@ -116,9 +97,9 @@ export const AboutUs = () => {
               />
             </div>
             
-            <div className="age-trends">
-              <h3 className="subsection-title">Age-Related Trends:</h3>
-              <p className="subsection-text">
+            <div className="info-block">
+              <h3 className="info-title">Age-Related Trends:</h3>
+              <p className="info-text">
                 Diabetes and Hypertension increase in frequency with age.<br />
                 Cataracts and Glaucoma are more prevalent in older age groups.<br />
                 Other diseases (O) are spread across all age groups but peak in
