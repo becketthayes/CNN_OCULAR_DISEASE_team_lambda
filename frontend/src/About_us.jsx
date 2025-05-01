@@ -3,6 +3,7 @@ import "./style_au.css";
 import logo from "./images/logo-1.png"
 import disease_distribution from "./images/distribution-of-diseases-1.png"
 import photo_2 from "./images/photo-2.png"
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 export const AboutUs = () => {
   return (
@@ -16,9 +17,10 @@ export const AboutUs = () => {
           
           <nav className="navigation">
             <div className="nav-items">
-              <button className="nav-button primary">
+              {/* Use Link component instead of button */}
+              <Link to="/" className="nav-button primary">
                 <div className="button-text">Home</div>
-              </button>
+              </Link>
               
               <div className="nav-link active">
                 <div className="link-text">About Us</div>
@@ -31,6 +33,7 @@ export const AboutUs = () => {
           </nav>
         </header>
         
+        {/* Rest of your component remains the same */}
         <main className="main-content">
           <section className="problem-statement-section">
             <h2 className="section-title">Our problem statement</h2>
@@ -61,9 +64,11 @@ export const AboutUs = () => {
           <div className="section-divider"></div>
           
           <section className="dataset-section">
+          <a href="https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k" target="_blank" rel="noopener noreferrer">
             <button className="dataset-button">
               <div className="button-text">Link to dataset!</div>
             </button>
+          </a>
             
             <div className="disease-legend">
               <div className="legend-column">
@@ -84,6 +89,14 @@ export const AboutUs = () => {
               </div>
             </div>
             
+            <div className="chart-container">
+              <img
+                className="distribution-chart"
+                alt="Distribution of diseases"
+                src={disease_distribution}
+              />
+            </div>
+
             <div className="disease-prevalence">
               <h3 className="subsection-title">Disease Prevalence:</h3>
               <p className="subsection-text">
@@ -93,14 +106,6 @@ export const AboutUs = () => {
                 Pathological Myopia (M) and Age-related Macular Degeneration (A)
                 are less common.
               </p>
-            </div>
-            
-            <div className="chart-container">
-              <img
-                className="distribution-chart"
-                alt="Distribution of diseases"
-                src={disease_distribution}
-              />
             </div>
             
             <div className="screenshot-container">
