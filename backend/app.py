@@ -4,10 +4,16 @@ from tensorflow.keras.models import load_model
 import cv2 
 from flask_cors import CORS
 import numpy as np
+import google.generativeai as genai
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"])
 
+load_dotenv()
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
 
 label_converter = {0 : 'Age related Macular Degeneration',
                    1: 'Cataract',
@@ -68,6 +74,22 @@ def predict():
     class_prediction = label_converter[np.argmax(prediction)]
 
     return jsonify({'prediction': class_prediction})
+
+@app.route('/api', methods=['POST']) 
+def api():
+    prompt = (
+    "Please answer the following question if it is related to eye diseases, eye clinics, or anything related to vision or eye health. "
+    "If the question is not related to eyes, respond instead with an interesting or fun fact about the human eye. Try to keep the response within 5 sentences long: "
+    )
+
+    user_input = request.json.get("message")
+
+    if not user_input:
+        return jsonify({"error": "No message provided"}), 400
+    
+    
+    response = model.generate_content(prompt+user_input)
+    return jsonify({"response": response.text})
 
 if __name__ == '__main__':
     app.run(port=5001, debug=True)

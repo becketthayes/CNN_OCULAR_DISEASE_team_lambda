@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logo from "./images/logo-1.png";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -6,6 +6,10 @@ import { Header } from "./components/Header";
 
 export const LandingPage = () => {
   const [prediction, setPrediction] = useState("Displays results here");
+  const [messages, setMessages] = useState([]);
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const chatEndRef = useRef(null);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -27,6 +31,50 @@ export const LandingPage = () => {
       console.error(err);
     }
   };
+
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    
+    if (!currentMessage.trim()) return;
+    
+    // Add user message to chat
+    const userMessage = { text: currentMessage, sender: "user" };
+    setMessages(prevMessages => [...prevMessages, userMessage]);
+    setCurrentMessage("");
+    setIsLoading(true);
+    
+    try {
+      // Send message to API
+      const response = await fetch("http://localhost:5001/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: currentMessage })
+      });
+      
+      const data = await response.json();
+      
+      // Add bot response to chat
+      setMessages(prevMessages => [
+        ...prevMessages, 
+        { text: data.response || "Sorry, I couldn't process that request.", sender: "bot" }
+      ]);
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setMessages(prevMessages => [
+        ...prevMessages, 
+        { text: "Sorry, there was an error processing your request.", sender: "bot" }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Auto-scroll to bottom of chat when new messages are added
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="page">
@@ -52,6 +100,57 @@ export const LandingPage = () => {
           
           <div className="result-container">
             <p className="result-text">{prediction}</p>
+          </div>
+          
+          {/* Chatbot Section */}
+          <div className="chatbot-section">
+            <h2 className="chatbot-title">Ask About Your Results</h2>
+            
+            <div className="chat-container">
+              <div className="messages-container">
+                {messages.length === 0 ? (
+                  <p className="empty-chat-message">Ask a question about your diagnosis or eye health.</p>
+                ) : (
+                  messages.map((msg, index) => (
+                    <div key={index} className={`message ${msg.sender}-message`}>
+                      <div className="message-bubble">
+                        <p>{msg.text}</p>
+                      </div>
+                    </div>
+                  ))
+                )}
+                {isLoading && (
+                  <div className="message bot-message">
+                    <div className="message-bubble loading">
+                      <div className="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={chatEndRef} />
+              </div>
+              
+              <form className="message-input-form" onSubmit={handleSendMessage}>
+                <input
+                  type="text"
+                  className="message-input"
+                  value={currentMessage}
+                  onChange={(e) => setCurrentMessage(e.target.value)}
+                  placeholder="Type your message here..."
+                  disabled={isLoading}
+                />
+                <button 
+                  type="submit" 
+                  className="send-button"
+                  disabled={isLoading || !currentMessage.trim()}
+                >
+                  Send
+                </button>
+              </form>
+            </div>
           </div>
         </main>
       </div>
