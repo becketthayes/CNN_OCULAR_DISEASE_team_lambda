@@ -590,3 +590,107 @@ a {
     padding: 8px 16px;
   }
 }
+
+/* Results Page Styles */
+.results-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.results-title {
+  font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: var(--text-shadow);
+}
+
+.results-description {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.eye-scan-gallery {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.eye-scan-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.result-card {
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.result-card-title {
+  font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.result-card-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.result-card-content p {
+  margin-bottom: 10px;
+}
+
+.result-card-content ul {
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.result-card-content li {
+  margin-bottom: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .results-title {
+    font-size: 32px;
+  }
+  
+  .results-description {
+    font-size: 16px;
+  }
+  
+  .result-card {
+    padding: 20px;
+  }
+  
+  .result-card-title {
+    font-size: 20px;
+  }
+  
+  .result-card-content {
+    font-size: 14px;
+  }
+}

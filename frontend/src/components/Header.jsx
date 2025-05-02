@@ -33,9 +33,17 @@ export const Header = ({ activePage }) => {
             </Link>
           )}
           
-          <Link to="/results-info" className="nav-link">
-            <div className="link-text">About your Results</div>
-          </Link>
+          {activePage === "results" ? (
+            <div className="nav-link active">
+                <div className="link-text">About your Results</div>
+            </div>
+            ) : (
+            <Link to="/results" className="nav-link">
+                <div className="link-text">About your Results</div>
+            </Link>
+            )}
+
+
         </div>
       </nav>
     </header>

@@ -79,7 +79,7 @@ def predict():
 def api():
     prompt = (
     "Please answer the following question if it is related to eye diseases, eye clinics, or anything related to vision or eye health. "
-    "If the question is not related to eyes, respond instead with an interesting or fun fact about the human eye. Try to keep the response within 5 sentences long: "
+    "If the question is not related to eyes, respond instead with an interesting or fun fact about the human eye (do not just make the fun fact always about how the human eye can see 10 million different colors). Try to keep the response within 5 sentences long: "
     )
 
     user_input = request.json.get("message")
