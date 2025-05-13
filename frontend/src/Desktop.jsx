@@ -5,32 +5,48 @@ import { Link } from "react-router-dom";
 import { Header } from "./components/Header";
 
 export const LandingPage = () => {
-  const [prediction, setPrediction] = useState("Displays results here");
+  const [prediction, setPrediction] = useState("");
+  const [confidence, setConfidence] = useState(null);
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
   const chatEndRef = useRef(null);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-
+  
+    // Create URL for image preview
+    const imageUrl = URL.createObjectURL(file);
+    setUploadedImage(imageUrl);
+  
     const formData = new FormData();
     formData.append("image", file);
-
+  
     try {
       const res = await fetch("http://localhost:5001/predict", {
         method: "POST",
         body: formData,
       });
-
+  
       const data = await res.json();
-      setPrediction(data.prediction || "No result returned.");
+      const { prediction, confidence } = data;
+  
+      if (prediction) {
+        setPrediction(prediction);
+        setConfidence(confidence !== undefined ? (confidence * 100).toFixed(2) : null);
+      } else {
+        setPrediction("No result returned.");
+        setConfidence(null);
+      }
     } catch (err) {
       setPrediction("Prediction failed.");
+      setConfidence(null);
       console.error(err);
     }
   };
+  
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -98,8 +114,26 @@ export const LandingPage = () => {
             <p className="upload-text">Click here to upload an eye image</p>
           </label>
           
+          {/* Image Preview Container */}
+          {uploadedImage && (
+            <img 
+              src={uploadedImage} 
+              alt="Uploaded eye fundus" 
+              className="uploaded-image"
+            />
+          )}
+          
           <div className="result-container">
-            <p className="result-text">{prediction}</p>
+            <p className="result-text">
+              {prediction && prediction !== "Displays results here" ? (
+                <>
+                  {prediction}
+                  {confidence !== null && ` (Confidence: ${confidence}%)`}
+                </>
+              ) : (
+                "Displays results here"
+              )}
+            </p>
           </div>
           
           {/* Chatbot Section */}

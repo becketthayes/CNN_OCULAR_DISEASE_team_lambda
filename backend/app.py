@@ -70,10 +70,10 @@ def predict():
 
     img_info, path = prepare_image(image_path)
     prediction  = new_model.predict(np.expand_dims(img_info, axis=0))
-    confidence = np.max(prediction)
+    confidence = float(np.max(prediction))
     class_prediction = label_converter[np.argmax(prediction)]
 
-    return jsonify({'prediction': class_prediction})
+    return jsonify({'prediction': class_prediction, 'confidence': confidence})
 
 @app.route('/api', methods=['POST']) 
 def api():

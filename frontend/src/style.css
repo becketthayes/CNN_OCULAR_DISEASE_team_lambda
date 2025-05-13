@@ -694,3 +694,22 @@ a {
     font-size: 14px;
   }
 }
+
+.image-preview-container {
+  width: 100%;
+  max-width: 842px;
+  margin: 0 auto 30px;
+  text-align: center;
+  background-color: var(--secondary-bg-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.uploaded-image {
+  display: block;
+  max-width: 80%;
+  max-height: 400px;
+  margin: 0 auto 30px;
+  border-radius: 10px;
+}
