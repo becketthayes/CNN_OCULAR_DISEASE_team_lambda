@@ -118,9 +118,15 @@ def api():
     
     try:
         prompt = (
-        "Please answer the following question if it is related to eye diseases, eye clinics, or anything related to vision or eye health. "
-        "If the question is not related to eyes, respond instead with an interesting or fun fact about the human eye (do not just make the fun fact always about how the human eye can see 10 million different colors). Try to keep the response within 5 sentences long: "
-        )
+    "Please answer the following question if it is related to eye diseases, eye clinics, or anything related to vision or eye health. "
+    "If the question is not related to eyes, instead respond with a fun or interesting fact about the human eye. "
+    "To keep things engaging, randomly choose the topic of the fun fact from one of the following categories: "
+    "eye anatomy, eye evolution, vision in animals, night vision, color perception, optical illusions, depth perception, eye reflexes, eye-related world records, strange or rare eye diseases, eye injuries in sports, "
+    "cultural beliefs about eyes, eye symbolism in religion, superstitions about eyes, artistic representations of eyes, historical facts about eye treatments, military or spy tech inspired by vision, eye-tracking technology, biometric security, augmented/virtual reality using eyes, "
+    "celebrity eye traits, eyes in movies or literature, and how different professions (like pilots or astronauts) rely on vision. "
+    "Avoid repeating the super common facts. Keep your response within 5 sentences."
+    )
+
 
         user_input = request.json.get("message")
 
