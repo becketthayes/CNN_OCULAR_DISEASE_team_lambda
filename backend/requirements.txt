@@ -1,0 +1,8 @@
+flask
+flask-cors
+python-dotenv
+opencv-python
+numpy
+tensorflow
+google-api-python-client
+gunicorn
