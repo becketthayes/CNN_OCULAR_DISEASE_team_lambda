@@ -25,7 +25,7 @@ export const LandingPage = () => {
     formData.append("image", file);
   
     try {
-      const res = await fetch("http://localhost:5001/predict", {
+      const res = await fetch("https://team-lambda-backend.onrender.com/predict", {
         method: "POST",
         body: formData,
       });
@@ -61,7 +61,7 @@ export const LandingPage = () => {
     
     try {
       // Send message to API
-      const response = await fetch("http://localhost:5001/api", {
+      const response = await fetch("https://team-lambda-backend.onrender.com/api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
