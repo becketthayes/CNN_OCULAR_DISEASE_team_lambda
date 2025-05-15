@@ -6,3 +6,5 @@ numpy
 tensorflow
 google-api-python-client
 gunicorn
+google-generativeai
+
