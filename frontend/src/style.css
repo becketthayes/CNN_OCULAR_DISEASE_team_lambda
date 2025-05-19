@@ -126,7 +126,7 @@ a {
 }
 
 .link-text, .button-text {
-  font-size: 16px;
+  font-size: 16px; /* Kept as is, seems reasonable */
   white-space: nowrap;
 }
 
@@ -138,7 +138,7 @@ a {
 /* Landing Page Specific */
 .page-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 96px;
+  font-size: 72px; /* Reduced from 96px */
   font-weight: 700;
   text-shadow: var(--text-shadow);
   -webkit-text-stroke: 1px var(--text-color);
@@ -146,13 +146,13 @@ a {
 }
 
 .page-subtitle {
-  font-size: 48px;
+  font-size: 36px; /* Reduced from 48px */
   font-weight: 400;
   text-align: center;
   color: rgba(0, 0, 0, 0.75);
   margin: 0 auto 60px;
   max-width: 900px;
-  line-height: 72px;
+  line-height: 1.5; /* Adjusted line-height for new font size */
 }
 
 .upload-container {
@@ -169,7 +169,7 @@ a {
 }
 
 .upload-text {
-  font-size: 30px;
+  font-size: 24px; /* Reduced from 30px */
   font-weight: 500;
   text-align: center;
 }
@@ -187,7 +187,7 @@ a {
 }
 
 .result-text {
-  font-size: 30px;
+  font-size: 24px; /* Reduced from 30px */
   font-weight: 500;
   text-align: center;
 }
@@ -208,7 +208,7 @@ a {
 
 .section-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 40px;
+  font-size: 32px; /* Reduced from 40px */
   font-weight: 700;
   text-align: center;
   text-decoration: underline;
@@ -217,8 +217,8 @@ a {
 }
 
 .section-text {
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 20px; /* Reduced from 40px */
+  line-height: 1.6; /* Adjusted line-height */
   text-align: center;
   max-width: 1140px;
   margin: 0 auto;
@@ -262,8 +262,8 @@ a {
 }
 
 .dataset-button .button-text {
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 28px; /* Reduced from 40px */
+  line-height: 1.5; /* Adjusted line-height */
   text-shadow: var(--text-shadow);
   -webkit-text-stroke: 1px var(--text-color);
 }
@@ -284,8 +284,8 @@ a {
 
 .legend-text {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 32px;
-  line-height: 48px;
+  font-size: 22px; /* Reduced from 32px */
+  line-height: 1.6; /* Adjusted line-height */
   font-weight: 700;
 }
 
@@ -298,17 +298,30 @@ a {
 
 .info-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 40px;
+  font-size: 28px; /* Reduced from 40px */
   font-weight: 700;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .info-text {
-  font-size: 40px;
-  line-height: 60px;
+  font-size: 20px; /* Reduced from 40px */
+  line-height: 1.6; /* Adjusted line-height */
   text-align: center;
 }
+
+.info-text ul {
+  list-style-position: inside; /* Ensures bullets are aligned well with centered text */
+  padding-left: 0; /* Reset padding as list-style-position handles it */
+  text-align: left; /* Align list items to the left for readability */
+  display: inline-block; /* Allows centering of the ul block itself */
+  margin-top: 10px; /* Add some space above the list */
+}
+
+.info-text li {
+  margin-bottom: 8px; /* Space between list items */
+}
+
 
 .chart-container,
 .screenshot-container {
@@ -330,27 +343,27 @@ a {
 @media (max-width: 1200px) {
   .section-text,
   .info-text {
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 18px; /* Adjusted from 32px */
+    line-height: 1.6; /* Adjusted */
   }
   
   .legend-text {
-    font-size: 28px;
-    line-height: 42px;
+    font-size: 20px; /* Adjusted from 28px */
+    line-height: 1.5; /* Adjusted */
   }
   
   .dataset-button .button-text {
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 24px; /* Adjusted from 32px */
+    line-height: 1.5; /* Adjusted */
   }
   
   .page-title {
-    font-size: 72px;
+    font-size: 60px; /* Adjusted from 72px */
   }
   
   .page-subtitle {
-    font-size: 36px;
-    line-height: 54px;
+    font-size: 30px; /* Adjusted from 36px */
+    line-height: 1.5; /* Adjusted */
   }
 }
 
@@ -362,8 +375,8 @@ a {
   }
   
   .logo {
-    height: 120px;
-    width: 120px;
+    height: 100px; /* Adjusted */
+    width: 100px;  /* Adjusted */
   }
   
   .nav-items {
@@ -374,55 +387,53 @@ a {
   
   .section-text,
   .info-text {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 16px; /* Adjusted from 24px */
+    line-height: 1.6; /* Adjusted */
   }
   
   .section-title,
   .info-title {
-    font-size: 32px;
+    font-size: 28px; /* Adjusted from 32px */
   }
   
   .legend-text {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 18px; /* Adjusted from 20px */
+    line-height: 1.5; /* Adjusted */
   }
   
   .disease-legend {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px; /* Adjusted */
   }
   
   .dataset-button .button-text {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 20px; /* Adjusted from 24px */
+    line-height: 1.5; /* Adjusted */
   }
   
   .page-title {
-    font-size: 48px;
+    font-size: 40px; /* Adjusted from 48px */
     text-align: center;
   }
   
   .page-subtitle {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 20px; /* Adjusted from 24px */
+    line-height: 1.5; /* Adjusted */
   }
   
   .upload-text,
   .result-text {
-    font-size: 24px;
+    font-size: 20px; /* Adjusted from 24px */
   }
   
   .upload-container {
-    height: 250px;
+    height: 220px; /* Adjusted */
   }
   
   .result-container {
-    height: 120px;
+    height: 100px; /* Adjusted */
   }
 }
-
-/* Add these styles to your existing style.css file */
 
 /* Chatbot Section */
 .chatbot-section {
@@ -435,7 +446,7 @@ a {
 
 .chatbot-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 36px;
+  font-size: 30px; /* Reduced from 36px */
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
@@ -465,7 +476,7 @@ a {
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
   margin: auto;
-  font-size: 20px;
+  font-size: 18px; /* Reduced from 20px */
 }
 
 .message {
@@ -486,6 +497,7 @@ a {
   border-radius: 18px;
   max-width: 70%;
   word-wrap: break-word;
+  font-size: 15px; /* Added for chat bubble text readability */
 }
 
 .user-message .message-bubble {
@@ -512,7 +524,7 @@ a {
   padding: 12px 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 20px;
-  font-size: 16px;
+  font-size: 15px; /* Adjusted from 16px */
   margin-right: 10px;
   outline: none;
   background-color: white;
@@ -525,7 +537,7 @@ a {
   border-radius: 20px;
   padding: 8px 20px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px; /* Adjusted from 16px */
   font-weight: 500;
 }
 
@@ -572,10 +584,10 @@ a {
   }
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for Chatbot */
 @media (max-width: 768px) {
   .chatbot-title {
-    font-size: 28px;
+    font-size: 24px; /* Adjusted from 28px */
   }
   
   .chat-container {
@@ -584,10 +596,15 @@ a {
   
   .message-bubble {
     max-width: 85%;
+    font-size: 14px; /* Adjusted for smaller screens */
   }
   
   .send-button {
     padding: 8px 16px;
+    font-size: 14px; /* Adjusted */
+  }
+  .message-input {
+    font-size: 14px; /* Adjusted */
   }
 }
 
@@ -599,14 +616,14 @@ a {
 
 .results-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 40px;
+  font-size: 32px; /* Reduced from 40px */
   font-weight: 700;
   margin-bottom: 20px;
   text-shadow: var(--text-shadow);
 }
 
 .results-description {
-  font-size: 18px;
+  font-size: 16px; /* Reduced from 18px */
   line-height: 1.5;
   max-width: 800px;
   margin: 0 auto;
@@ -648,14 +665,14 @@ a {
 
 .result-card-title {
   font-family: "Jura-Bold", Helvetica, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 20px; /* Reduced from 24px */
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--text-color);
 }
 
 .result-card-content {
-  font-size: 16px;
+  font-size: 15px; /* Reduced from 16px */
   line-height: 1.6;
 }
 
@@ -666,20 +683,21 @@ a {
 .result-card-content ul {
   margin-left: 20px;
   margin-top: 5px;
+  list-style-type: disc; /* Added for explicit bullet points */
 }
 
 .result-card-content li {
   margin-bottom: 8px;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for Results Page */
 @media (max-width: 768px) {
   .results-title {
-    font-size: 32px;
+    font-size: 28px; /* Adjusted from 32px */
   }
   
   .results-description {
-    font-size: 16px;
+    font-size: 14px; /* Adjusted from 16px */
   }
   
   .result-card {
@@ -687,11 +705,11 @@ a {
   }
   
   .result-card-title {
-    font-size: 20px;
+    font-size: 18px; /* Adjusted from 20px */
   }
   
   .result-card-content {
-    font-size: 14px;
+    font-size: 13px; /* Adjusted from 14px */
   }
 }
 
