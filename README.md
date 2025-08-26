@@ -1,4 +1,59 @@
-# team_lambda
+# Opticare (team_lambda GDSC)
+
+A web app that processes fundus images of the eye and uses a custom Convolutional Neural Network (CNN) to classify potential ocular diseases
+
+--- 
+
+## Table of Contents 
+- [Overview](#overview)
+- [Features](#features)
+- [Technical Details](#technical-details)
+- [Usage](#usage)
+- [Timeline](#timeline)
+
+--- 
+
+## Overview
+
+**Opticare** aims to provide a viable and readily available method for identifying ocular diseases. The web interface allows users to upload fundus images of the eye and receive a quick diagnosis regarding potential ocular diseases. Additionally, users can learn more about eye and vision health by talking to the built-in chatbot which is beneath the image upload.
+
+The image classifier is a custom-made CNN that is trained on thousands of fundus images from this [Kaggle Dataset](https://www.kaggle.com/datasets/andrewmvd/ocular-disease-recognition-odir5k). It can recognize ocular diseases including glaucoma, cataracts, hypertension, and myopia. 
+
+--- 
+
+## Features
+
+- Ocular disease classifier that provides real-time ML inference
+  - Also displays confidence score for the prediction
+- Chatbot tailored toward eye health and vision
+- "About your Results" page provides relevant information about all of the eye conditions in the dataset
+
+---
+
+## Technical Details
+
+- Backend
+  - Trained a custom CNN using TensorFlow to detect ocular diseases
+  - Flask backend handles the image uploads, predictions, and chatbot responses
+  - Chatbot makes calls to Gemini API
+- Frontend
+  - React 
+  - Makes API calls to the Flask backend to send images and retrieve predictions
+
+---
+
+## Usage
+
+1. Upload Image: Select and upload a fundus image of the eye.
+
+2. Get Results: The app will process the image and display the predicted ocular disease along with a confidence score.
+
+3. Learn More: Use the chatbot to ask questions about eye health or navigate to the "About your Results" page to get more information on the diagnosed conditions.
+
+---
+
+## Timeline
+
 Predicting Ocular Disease
 
 Problem Statement: The early detection of ocular diseases including glaucoma, cataracts, and age-related macular degeneration is vital to ensure healthy eyes in patients across the world. Many people do not have access to the medical support necessary to detect these issues, which can lead to severe health complications. There is a need for viable and readily available methods for identifying ocular diseases.

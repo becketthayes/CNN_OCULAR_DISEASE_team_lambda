@@ -118,7 +118,7 @@ def api():
     
     try:
         prompt = (
-    "Please answer the following question if it is related to eye diseases, eye clinics, or anything related to vision or eye health. "
+    "Please answer the following question if it is related to eyes, eye diseases, eye clinics, or anything related to vision or eye health. "
     "If the question is not related to eyes, instead respond with a fun or interesting fact about the human eye. "
     "To keep things engaging, randomly choose the topic of the fun fact from one of the following categories: "
     "eye anatomy, eye evolution, vision in animals, night vision, color perception, optical illusions, depth perception, eye reflexes, eye-related world records, strange or rare eye diseases, eye injuries in sports, "
